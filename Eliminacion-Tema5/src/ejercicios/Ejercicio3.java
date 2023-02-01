@@ -1,6 +1,5 @@
 package ejercicios;
 
-import java.security.DrbgParameters.NextBytes;
 import java.util.Arrays;
 import java.util.Scanner;
 	/**
@@ -45,14 +44,15 @@ public class Ejercicio3 {
 				System.out.println("Introduce el valor que desea eliminar:");
 				valorEliminar=read.nextInt();
 				
-				int indiceBorrar = Arrays.binarySearch(tabla, valorEliminar);
+				int indiceBorrar = 0;
 				
+				while (indiceBorrar<tabla.length && valorEliminar != tabla[indiceBorrar]) {
+					indiceBorrar++;
+				}
 				if (indiceBorrar>=0) {
 					System.arraycopy(tabla, indiceBorrar+1, tabla, indiceBorrar, tabla.length-indiceBorrar-1);
 					
 					tabla = Arrays.copyOf(tabla, tabla.length-1);
-					
-					System.out.println(Arrays.toString(tabla));
 				}
 				
 			case "c":
